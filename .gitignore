@@ -1,0 +1,26 @@
+# Visual Studio
+.vs/
+*.user
+*.suo
+
+# Build artifacts
+bin/
+obj/
+out/
+
+# Paket/NuGet
+packages/
+*.nupkg
+
+# Logs
+*.log
+
+# OS
+Thumbs.db
+.DS_Store
+
+# Rider/JetBrains
+.idea/
+
+# Publish profiles secrets (opcjonalnie)
+**/Properties/PublishProfiles/*.pubxml.user
