@@ -5,21 +5,20 @@ VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{846C1C46-D3C7-48B4-92CF-6847108D83CA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UniversityApp.Domain", "src\UniversityApp.Domain\UniversityApp.Domain.csproj", "{05D05049-BF3C-4746-A976-9CA2C094533F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UniversityApp.Domain", "src\UniversityApp.Domain\UniversityApp.Domain.csproj", "{05D05049-BF3C-4746-A976-9CA2C094533F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UniversityApp.Application", "src\UniversityApp.Application\UniversityApp.Application.csproj", "{6E667E94-AD66-4FF3-B20F-49076B5D0663}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UniversityApp.Application", "src\UniversityApp.Application\UniversityApp.Application.csproj", "{6E667E94-AD66-4FF3-B20F-49076B5D0663}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UniversityApp.Infrastructure", "src\UniversityApp.Infrastructure\UniversityApp.Infrastructure.csproj", "{4B3C9D13-F8D8-4718-A230-35EF2FBAB0DB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UniversityApp.Infrastructure", "src\UniversityApp.Infrastructure\UniversityApp.Infrastructure.csproj", "{4B3C9D13-F8D8-4718-A230-35EF2FBAB0DB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UniversityApp.Api.Rest", "src\UniversityApp.Api.Rest\UniversityApp.Api.Rest.csproj", "{EC2562F5-6400-4CEF-B491-10DAF3E24A11}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UniversityApp.Api.Rest", "src\UniversityApp.Api.Rest\UniversityApp.Api.Rest.csproj", "{EC2562F5-6400-4CEF-B491-10DAF3E24A11}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UniversityApp.Ui.Admin", "src\UniversityApp.Ui.Admin\UniversityApp.Ui.Admin.csproj", "{96343A27-A13A-454C-A29B-2D69BD507B57}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{05D05049-BF3C-4746-A976-9CA2C094533F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -38,11 +37,22 @@ Global
 		{EC2562F5-6400-4CEF-B491-10DAF3E24A11}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EC2562F5-6400-4CEF-B491-10DAF3E24A11}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EC2562F5-6400-4CEF-B491-10DAF3E24A11}.Release|Any CPU.Build.0 = Release|Any CPU
+		{96343A27-A13A-454C-A29B-2D69BD507B57}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{96343A27-A13A-454C-A29B-2D69BD507B57}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{96343A27-A13A-454C-A29B-2D69BD507B57}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{96343A27-A13A-454C-A29B-2D69BD507B57}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{05D05049-BF3C-4746-A976-9CA2C094533F} = {846C1C46-D3C7-48B4-92CF-6847108D83CA}
 		{6E667E94-AD66-4FF3-B20F-49076B5D0663} = {846C1C46-D3C7-48B4-92CF-6847108D83CA}
 		{4B3C9D13-F8D8-4718-A230-35EF2FBAB0DB} = {846C1C46-D3C7-48B4-92CF-6847108D83CA}
 		{EC2562F5-6400-4CEF-B491-10DAF3E24A11} = {846C1C46-D3C7-48B4-92CF-6847108D83CA}
+		{96343A27-A13A-454C-A29B-2D69BD507B57} = {846C1C46-D3C7-48B4-92CF-6847108D83CA}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E0A1A6BD-020A-46D9-B0DA-A249F7F055CC}
 	EndGlobalSection
 EndGlobal

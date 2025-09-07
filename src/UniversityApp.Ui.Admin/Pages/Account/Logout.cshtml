@@ -1,0 +1,13 @@
+﻿@page
+@model UniversityApp.Ui.Admin.Pages.Account.LogoutModel
+@{
+    ViewData["Title"] = "Wylogowanie";
+}
+
+<h2>Czy na pewno chcesz się wylogować?</h2>
+
+<form method="post">
+    <input type="hidden" asp-for="returnUrl" />
+    <button type="submit" class="btn btn-danger">Wyloguj</button>
+    <a asp-page="/Index" class="btn btn-secondary">Anuluj</a>
+</form>
