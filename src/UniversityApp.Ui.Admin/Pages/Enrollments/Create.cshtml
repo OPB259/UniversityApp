@@ -1,0 +1,41 @@
+﻿@page
+@model UniversityApp.Ui.Admin.Pages.Enrollments.CreateModel
+@{
+    ViewData["Title"] = "Add enrollment";
+}
+
+<h2>Add enrollment</h2>
+
+<form method="post">
+    <div class="mb-3">
+        <label asp-for="Input.StudentId" class="form-label"></label>
+        <select asp-for="Input.StudentId" class="form-select">
+            <option value="">-- choose student --</option>
+            @foreach (var s in Model.Students)
+            {
+                <option value="@s.Id">@s.Name (@s.Id)</option>
+            }
+        </select>
+        <span asp-validation-for="Input.StudentId" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Input.CourseId" class="form-label"></label>
+        <select asp-for="Input.CourseId" class="form-select">
+            <option value="">-- choose course --</option>
+            @foreach (var c in Model.Courses)
+            {
+                <option value="@c.Id">@c.Title (@c.Id)</option>
+            }
+        </select>
+        <span asp-validation-for="Input.CourseId" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Save</button>
+    <a asp-page="Index" class="btn btn-link">Back</a>
+</form>
+
+@if (!string.IsNullOrWhiteSpace(Model.Error))
+{
+    <div class="alert alert-danger mt-3">@Model.Error</div>
+}

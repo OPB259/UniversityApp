@@ -3,34 +3,25 @@
 @{
     ViewData["Title"] = "Students";
 }
+<h1>Students</h1>
 
-<h2>Students</h2>
-
-@if (!string.IsNullOrWhiteSpace(Model.Error))
+@if (!string.IsNullOrEmpty(Model.Error))
 {
-    <div class="alert alert-danger">API error: @Model.Error</div>
+    <div class="alert alert-danger">@Model.Error</div>
 }
 
-@if (Model.Students.Count == 0)
+@if (Model.Items == null || Model.Items.Count == 0)
 {
     <p>No students yet.</p>
 }
 else
 {
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Name</th>
-            </tr>
-        </thead>
+    <table class="table table-striped">
+        <thead><tr><th>Name</th></tr></thead>
         <tbody>
-            @foreach (var s in Model.Students)
+            @foreach (var s in Model.Items)
             {
-                <tr>
-                    <td>@s.Id</td>
-                    <td>@s.Name</td>
-                </tr>
+                <tr><td>@s.Name</td></tr>
             }
         </tbody>
     </table>

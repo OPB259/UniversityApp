@@ -1,0 +1,20 @@
+﻿@page "{id:int}"
+@model UniversityApp.Ui.Admin.Pages.Enrollments.DeleteModel
+@{
+    ViewData["Title"] = "Delete enrollment";
+}
+
+<h2>Delete enrollment</h2>
+
+<p>Are you sure you want to delete enrollment with ID <strong>@Model.Id</strong>?</p>
+
+<form method="post">
+    <input type="hidden" asp-for="Id" />
+    <button type="submit" class="btn btn-danger">Delete</button>
+    <a asp-page="Index" class="btn btn-link">Cancel</a>
+</form>
+
+@if (!string.IsNullOrWhiteSpace(Model.Error))
+{
+    <div class="alert alert-danger mt-3">@Model.Error</div>
+}

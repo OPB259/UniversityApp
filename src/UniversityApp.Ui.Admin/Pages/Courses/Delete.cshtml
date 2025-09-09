@@ -1,0 +1,27 @@
+﻿@page "{id:int}"
+@model UniversityApp.Ui.Admin.Pages.Courses.DeleteModel
+@{
+    ViewData["Title"] = "Delete course";
+}
+
+<h2>Delete course</h2>
+
+@if (Model.Item is null)
+{
+    <div class="alert alert-warning">Course not found.</div>
+}
+else
+{
+    <p>Czy na pewno chcesz usunąć kurs <strong>@Model.Item.Title</strong> (#@Model.Item.Id)?</p>
+}
+
+<form method="post">
+    <input type="hidden" asp-for="Id" />
+    <button type="submit" class="btn btn-danger">Delete</button>
+    <a asp-page="Index" class="btn btn-link">Cancel</a>
+</form>
+
+@if (!string.IsNullOrWhiteSpace(Model.Error))
+{
+    <div class="alert alert-danger mt-3">@Model.Error</div>
+}

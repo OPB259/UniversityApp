@@ -15,35 +15,34 @@ public class LoginModel : Microsoft.AspNetCore.Mvc.RazorPages.PageModel
     [BindProperty]
     public InputModel Input { get; set; } = new();
 
-    public class InputModel
+    public sealed class InputModel
     {
-        [Required]
-        public string Username { get; set; } = "";
-
-        [Required]
-        public string Password { get; set; } = "";
+        [Required] public string Username { get; set; } = "";
+        [Required] public string Password { get; set; } = "";
     }
 
     public void OnGet() { }
 
-    public async Task<IActionResult> OnPostAsync()
+    public async Task<IActionResult> OnPostAsync(CancellationToken ct)
     {
-        if (!ModelState.IsValid)
-            return Page();
+        if (!ModelState.IsValid) return Page();
 
-        var (ok, token, err) = await _tokens.GetTokenAsync(Input.Username, Input.Password);
-        if (!ok || string.IsNullOrWhiteSpace(token))
+        var token = await _tokens.GetTokenAsync(Input.Username, Input.Password, ct);
+        if (string.IsNullOrWhiteSpace(token))
         {
-            ModelState.AddModelError(string.Empty, err ?? "Login failed.");
+            ModelState.AddModelError(string.Empty, "Invalid username or password.");
             return Page();
         }
 
-        // Zaloguj cookie (prosto – tylko Name)
-        var claims = new List<Claim> { new(ClaimTypes.Name, Input.Username) };
-        var identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
-        var principal = new ClaimsPrincipal(identity);
+        // 1) zapisz token do sesji
+        HttpContext.Session.SetString("AccessToken", token);
 
-        await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal);
-        return RedirectToPage("/Index");
+        // 2) cookie auth
+        var claims = new[] { new Claim(ClaimTypes.Name, Input.Username) };
+        var identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
+        await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(identity));
+
+        // 3) na Students
+        return RedirectToPage("/Students/Index");
     }
 }

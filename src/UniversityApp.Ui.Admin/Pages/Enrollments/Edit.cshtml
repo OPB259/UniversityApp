@@ -1,0 +1,41 @@
+﻿@page "{id:int}"
+@model UniversityApp.Ui.Admin.Pages.Enrollments.EditModel
+@{
+    ViewData["Title"] = "Edit enrollment";
+}
+
+<h2>Edit enrollment #@Model.Input.Id</h2>
+
+<form method="post">
+    <input type="hidden" asp-for="Input.Id" />
+
+    <div class="mb-3">
+        <label asp-for="Input.StudentId" class="form-label"></label>
+        <select asp-for="Input.StudentId" class="form-select">
+            @foreach (var s in Model.Students)
+            {
+                <option value="@s.Id">@s.Name (@s.Id)</option>
+            }
+        </select>
+        <span asp-validation-for="Input.StudentId" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Input.CourseId" class="form-label"></label>
+        <select asp-for="Input.CourseId" class="form-select">
+            @foreach (var c in Model.Courses)
+            {
+                <option value="@c.Id">@c.Title (@c.Id)</option>
+            }
+        </select>
+        <span asp-validation-for="Input.CourseId" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Save</button>
+    <a asp-page="Index" class="btn btn-link">Back</a>
+</form>
+
+@if (!string.IsNullOrWhiteSpace(Model.Error))
+{
+    <div class="alert alert-danger mt-3">@Model.Error</div>
+}

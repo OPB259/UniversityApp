@@ -1,0 +1,35 @@
+﻿@page
+@model UniversityApp.Ui.Admin.Pages.Enrollments.IndexModel
+@{
+    ViewData["Title"] = "Enrollments";
+}
+<h1>Enrollments</h1>
+
+<a class="btn btn-primary mb-3" asp-page="./Create">Create</a>
+<a class="btn btn-outline-secondary mb-3 ms-2" asp-page="../Students/Index">Students</a>
+<a class="btn btn-outline-secondary mb-3 ms-2" asp-page="../Courses/Index">Courses</a>
+
+@if (!string.IsNullOrEmpty(Model.Error))
+{
+    <div class="alert alert-danger">@Model.Error</div>
+}
+
+@if (Model.Items == null || Model.Items.Count == 0)
+{
+    <p>No enrollments yet.</p>
+}
+else
+{
+    <table class="table table-striped">
+        <thead><tr><th>StudentId</th><th>CourseId</th></tr></thead>
+        <tbody>
+            @foreach (var e in Model.Items)
+            {
+                <tr>
+                    <td>@e.StudentId</td>
+                    <td>@e.CourseId</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

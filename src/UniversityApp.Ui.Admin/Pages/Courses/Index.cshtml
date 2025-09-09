@@ -1,0 +1,30 @@
+﻿@page
+@model UniversityApp.Ui.Admin.Pages.Courses.IndexModel
+@{
+    ViewData["Title"] = "Courses";
+}
+<h1>Courses</h1>
+
+<a class="btn btn-primary mb-3" asp-page="./Create">Create</a>
+
+@if (!string.IsNullOrEmpty(Model.Error))
+{
+    <div class="alert alert-danger">@Model.Error</div>
+}
+
+@if (Model.Items == null || Model.Items.Count == 0)
+{
+    <p>No courses yet.</p>
+}
+else
+{
+    <table class="table table-striped">
+        <thead><tr><th>Title</th></tr></thead>
+        <tbody>
+            @foreach (var c in Model.Items)
+            {
+                <tr><td>@c.Title</td></tr>
+            }
+        </tbody>
+    </table>
+}
