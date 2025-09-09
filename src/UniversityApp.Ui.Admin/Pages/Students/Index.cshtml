@@ -1,4 +1,37 @@
 ﻿@page
 @model UniversityApp.Ui.Admin.Pages.Students.IndexModel
 @{
+    ViewData["Title"] = "Students";
+}
+
+<h2>Students</h2>
+
+@if (!string.IsNullOrWhiteSpace(Model.Error))
+{
+    <div class="alert alert-danger">API error: @Model.Error</div>
+}
+
+@if (Model.Students.Count == 0)
+{
+    <p>No students yet.</p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var s in Model.Students)
+            {
+                <tr>
+                    <td>@s.Id</td>
+                    <td>@s.Name</td>
+                </tr>
+            }
+        </tbody>
+    </table>
 }
